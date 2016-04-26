@@ -12,7 +12,7 @@ function dispatch()
     while true do
         assert(funclist[name] ~= nil, name)
         local nextfunc = funclist[name]
-        io.write(name .. ": ")
+        print(name .. ": ")
         status, name = coroutine.resume(nextfunc)
         --print(status, name)
         if status == false or not name then break end
@@ -29,21 +29,22 @@ end
 --function name should be prefix with pil_
 
 function pil_main()
-    print("enter pil_main")
+    print(" enter pil_main")
     transfer("pil_foo1")
-    print("leave pil_main")
+    transfer("pil_foo2")
+    print(" leave pil_main")
 end
 
 function pil_foo1()
-    print("enter pil_foo1")
+    print(" enter pil_foo1")
     transfer("pil_foo2")
-    print("leave pil_foo1")
+    print(" leave pil_foo1")
 end
 
 function pil_foo2()
-    print("enter pil_foo2")
+    print(" enter pil_foo2")
     transfer("pil_main")
-    print("leave pil_foo2")
+    print(" leave pil_foo2")
 end
 
 
